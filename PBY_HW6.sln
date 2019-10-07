@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesApp0", "LesApp0\LesApp0.csproj", "{39CE7AF5-3FD9-4532-979A-5C31EA708056}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesApp1.Lib", "LesApp1.Lib\LesApp1.Lib.csproj", "{7AD63CA9-BEBC-45B5-87FB-444047AC9555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LesApp1.Tests", "LesApp1.Tests\LesApp1.Tests.csproj", "{23146E54-2871-4ACA-B0EB-FEFB6A8ECC5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{39CE7AF5-3FD9-4532-979A-5C31EA708056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39CE7AF5-3FD9-4532-979A-5C31EA708056}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39CE7AF5-3FD9-4532-979A-5C31EA708056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD63CA9-BEBC-45B5-87FB-444047AC9555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD63CA9-BEBC-45B5-87FB-444047AC9555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD63CA9-BEBC-45B5-87FB-444047AC9555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD63CA9-BEBC-45B5-87FB-444047AC9555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23146E54-2871-4ACA-B0EB-FEFB6A8ECC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23146E54-2871-4ACA-B0EB-FEFB6A8ECC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23146E54-2871-4ACA-B0EB-FEFB6A8ECC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23146E54-2871-4ACA-B0EB-FEFB6A8ECC5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
