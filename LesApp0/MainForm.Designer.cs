@@ -34,11 +34,11 @@
             this.openFile = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.analysis = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolLb = new System.Windows.Forms.ToolStripLabel();
             this.tb = new System.Windows.Forms.TextBox();
             this.openFD = new System.Windows.Forms.OpenFileDialog();
-            this.analysis = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.ms.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -69,23 +69,32 @@
             // 
             this.openFile.Name = "openFile";
             this.openFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openFile.Size = new System.Drawing.Size(152, 22);
+            this.openFile.Size = new System.Drawing.Size(146, 22);
             this.openFile.Text = "Open";
             this.openFile.ToolTipText = "Open file *.exe, *.dll";
-            this.openFile.Click += new System.EventHandler(this.openFile_Click);
+            this.openFile.Click += new System.EventHandler(this.OpenFile_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(146, 22);
             this.toolStripMenuItem1.Text = "Close";
             this.toolStripMenuItem1.ToolTipText = "Close program";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.ToolStripMenuItem1_Click);
+            // 
+            // analysis
+            // 
+            this.analysis.Enabled = false;
+            this.analysis.Name = "analysis";
+            this.analysis.Size = new System.Drawing.Size(62, 20);
+            this.analysis.Text = "Analysis";
+            this.analysis.ToolTipText = "Analysis loaded file";
+            this.analysis.Click += new System.EventHandler(this.Analysis_Click);
             // 
             // toolStrip1
             // 
@@ -120,15 +129,7 @@
             this.openFD.FileName = "openFD";
             this.openFD.Filter = "Programs *.exe|*.exe|Library *.dll|*.dll|All Files|*.*";
             // 
-            // analysis
-            // 
-            this.analysis.Enabled = false;
-            this.analysis.Name = "analysis";
-            this.analysis.Size = new System.Drawing.Size(62, 20);
-            this.analysis.Text = "Analysis";
-            this.analysis.ToolTipText = "Analysis loaded file";
-            // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -137,7 +138,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.ms);
             this.MainMenuStrip = this.ms;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "LesApp0";
             this.ms.ResumeLayout(false);
             this.ms.PerformLayout();
