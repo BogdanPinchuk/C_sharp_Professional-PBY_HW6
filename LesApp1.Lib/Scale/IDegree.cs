@@ -9,7 +9,7 @@ namespace LesApp1.Lib.Scale
     /// <summary>
     /// Струкрута градусів певної шкали
     /// </summary>
-    interface IDegree
+    public interface IDegree
     {
         /// <summary>
         /// Назва шкали
@@ -27,5 +27,16 @@ namespace LesApp1.Lib.Scale
         /// Значення температури в Цельсіях
         /// </summary>
         double CelsiusDegree { get; set; }
+
+    }
+
+    /// <summary>
+    /// Вивід інформації
+    /// </summary>
+    /// <returns></returns>
+    internal static class ExtentionMethod
+    {
+        internal static string ConvertToString(this IDegree degree)
+            => $"{degree.Value} {degree.Unit}";
     }
 }

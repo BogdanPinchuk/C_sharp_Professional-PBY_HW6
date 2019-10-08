@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace LesApp1.Lib.Scale
 {
     /// <summary>
-    /// Кельвін
+    /// Ранкін
     /// </summary>
-    struct Kelvin : IDegree
+    struct Rankine : IDegree
     {
         /// <summary>
         /// Градуси цельсія
@@ -36,25 +36,27 @@ namespace LesApp1.Lib.Scale
         /// <summary>
         /// Назва шкали
         /// </summary>
-        public string Name => "Kelvin";
+        public string Name => "Rankine";
 
         /// <summary>
         /// Розмірність
         /// </summary>
-        public string Unit => "K";
+        public string Unit => "°Ra";
 
         /// <summary>
         /// Значення температури заданої шкали
         /// </summary>
         public double Value
         {
-            get { return celsius + 273.15; }
+            get { return (celsius - absZero) * 9 / 5; }
 
             set
             {
-                double temp = value - 273.15;
+                double temp = (value * 5 / 9) + absZero;
                 CelsiusDegree = temp;
             }
         }
+
     }
+
 }

@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scale\Celsius.cs" />
+    <Compile Include="Scale\Fahrenheit.cs" />
     <Compile Include="Scale\IDegree.cs" />
     <Compile Include="Scale\Kelvin.cs" />
+    <Compile Include="Scale\Rankine.cs" />
     <Compile Include="Temperature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

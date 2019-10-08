@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace LesApp1.Lib.Scale
 {
     /// <summary>
-    /// Кельвін
+    /// Фаренгейт
     /// </summary>
-    struct Kelvin : IDegree
+    struct Fahrenheit : IDegree
     {
         /// <summary>
         /// Градуси цельсія
@@ -36,25 +36,26 @@ namespace LesApp1.Lib.Scale
         /// <summary>
         /// Назва шкали
         /// </summary>
-        public string Name => "Kelvin";
+        public string Name => "Fahrenheit";
 
         /// <summary>
         /// Розмірність
         /// </summary>
-        public string Unit => "K";
+        public string Unit => "°F";
 
         /// <summary>
         /// Значення температури заданої шкали
         /// </summary>
         public double Value
         {
-            get { return celsius + 273.15; }
+            get { return (celsius * 9 / 5) + 32; }
 
             set
             {
-                double temp = value - 273.15;
+                double temp = (value - 32) * 5 / 9;
                 CelsiusDegree = temp;
             }
         }
+
     }
 }
