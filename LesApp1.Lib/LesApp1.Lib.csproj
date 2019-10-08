@@ -41,10 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Scale\Celsius.cs" />
+    <Compile Include="Scale\Dalton.cs" />
+    <Compile Include="Scale\Delisle.cs" />
     <Compile Include="Scale\Fahrenheit.cs" />
+    <Compile Include="Scale\Hooke.cs" />
     <Compile Include="Scale\IDegree.cs" />
     <Compile Include="Scale\Kelvin.cs" />
+    <Compile Include="Scale\Leiden.cs" />
+    <Compile Include="Scale\Newton.cs" />
     <Compile Include="Scale\Rankine.cs" />
+    <Compile Include="Scale\Reaumur.cs" />
+    <Compile Include="Scale\Romer.cs" />
     <Compile Include="Temperature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

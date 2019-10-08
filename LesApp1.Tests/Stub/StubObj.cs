@@ -28,5 +28,33 @@ namespace LesApp1.Tests.Stub
         /// ТКВ - Ранкін
         /// </summary>
         public static double BWRa = 671.67;
+        /// <summary>
+        /// ТКВ - Ремер
+        /// </summary>
+        public static double BWRo = 60;
+        /// <summary>
+        /// ТКВ - Ньютон
+        /// </summary>
+        public static double BWN = 33;
+        /// <summary>
+        /// ТКВ - Деліль
+        /// </summary>
+        public static double BWD = 0;
+        /// <summary>
+        /// ТКВ - Реомюр
+        /// </summary>
+        public static double BWRe = 80;
+        /// <summary>
+        /// ТКВ - Гук
+        /// </summary>
+        public static double BWH = 240;
+        /// <summary>
+        /// ТКВ - Дальтон
+        /// </summary>
+        public static double BWDa = 100;
+        /// <summary>
+        /// ТКВ - Лейден
+        /// </summary>
+        public static double BWL = 353;
     }
 }

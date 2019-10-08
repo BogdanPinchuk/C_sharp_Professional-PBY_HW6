@@ -9,6 +9,7 @@ using LesApp1.Lib.Scale;
 // https://en.wikipedia.org/wiki/Scale_of_temperature
 // https://uk.wikipedia.org/wiki/Температурна_шкала
 // https://ru.wikipedia.org/wiki/Единицы_измерения_температуры
+// https://en.wikipedia.org/wiki/Conversion_of_units_of_temperature#Comparison_of_temperature_scales
 
 // Примітка. Градуси Цельсія загально прийнята шкала вимірювання згідно системи СІ,
 // фаренгейти використовуються в США, що до кельвінів - то цю шкалу практично не 
@@ -118,6 +119,27 @@ namespace LesApp1.Lib
                 case TypeScale.Rankine:
                     scale = new Rankine() { Value = value };
                     goto default;
+                case TypeScale.Romer:
+                    scale = new Romer() { Value = value };
+                    goto default;
+                case TypeScale.Newton:
+                    scale = new Newton() { Value = value };
+                    goto default;
+                case TypeScale.Delisle:
+                    scale = new Delisle() { Value = value };
+                    goto default;
+                case TypeScale.Reaumur:
+                    scale = new Reaumur() { Value = value };
+                    goto default;
+                case TypeScale.Hooke:
+                    scale = new Hooke() { Value = value };
+                    goto default;
+                case TypeScale.Dalton:
+                    scale = new Dalton() { Value = value };
+                    goto default;
+                case TypeScale.Leiden:
+                    scale = new Leiden() { Value = value };
+                    goto default;
                 default:
                     celsius = scale.CelsiusDegree;
                     break;
@@ -151,6 +173,27 @@ namespace LesApp1.Lib
                     break;
                 case TypeScale.Rankine:
                     scale = new Rankine() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Romer:
+                    scale = new Romer() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Newton:
+                    scale = new Newton() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Delisle:
+                    scale = new Delisle() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Reaumur:
+                    scale = new Reaumur() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Hooke:
+                    scale = new Hooke() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Dalton:
+                    scale = new Dalton() { CelsiusDegree = celsius };
+                    break;
+                case TypeScale.Leiden:
+                    scale = new Leiden() { CelsiusDegree = celsius };
                     break;
             }
 
