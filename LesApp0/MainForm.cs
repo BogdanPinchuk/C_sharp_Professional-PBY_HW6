@@ -74,13 +74,13 @@ namespace LesApp0
         private void Analysis_Click(object sender, EventArgs e)
         {
             // для завантаження збірки
-            Assembly assebmbly = null;
+            Assembly assembly = null;
             tb.Text = string.Empty;
 
             try
             {
                 // загрузка зборки
-                assebmbly = Assembly.LoadFrom(path);
+                assembly = Assembly.LoadFrom(path);
                 toolLb.Text = "File loaded for analysis.";
             }
             catch (FileNotFoundException ex)
@@ -89,11 +89,11 @@ namespace LesApp0
             }
 
             // ім'я збірки
-            tb.Text += assebmbly.FullName + Environment.NewLine;
+            tb.Text += assembly.FullName + Environment.NewLine;
             tb.Text += new string('-', 27) + Environment.NewLine;
 
             // виведення інформації про всі типи у збірці
-            Type[] types = assebmbly.GetTypes();
+            Type[] types = assembly.GetTypes();
 
             foreach (Type type in types)
             {
