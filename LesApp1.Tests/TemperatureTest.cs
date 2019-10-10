@@ -34,32 +34,21 @@ namespace LesApp1.Tests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception),
+            "Temperature less absolute zero.")]
         public void SetValue_LessAsbZero_Zero()
         {
             // arrange
             converter.SetValue(StubObj.LessAbsZero, Temperature.TypeScale.Celsius);
-
-            // act
-            double actual = converter.GetValue(Temperature.TypeScale.Celsius);
-
-            // assert
-            Assert.AreNotEqual(StubObj.LessAbsZero, actual);
-            Assert.AreEqual(0, actual);
         }
 
         [TestMethod]
+        [ExpectedException(typeof(Exception),
+            "Temperature less absolute zero.")]
         public void SetValue_LessAsbZero_Kelvin_Zero()
         {
             // arrange
             converter.SetValue(-1, Temperature.TypeScale.Kelvin);
-
-            // act
-            double actual = converter.GetValue(Temperature.TypeScale.Celsius);
-            double actK = converter.GetValue(Temperature.TypeScale.Kelvin);
-
-            // assert
-            Assert.AreEqual(0, actual);
-            Assert.AreNotEqual(-1, actK);
         }
 
         // Примітка. BWC - BoilWaterС - 100 С кипіння води

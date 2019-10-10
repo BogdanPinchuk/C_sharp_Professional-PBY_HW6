@@ -29,7 +29,7 @@ namespace LesApp1.Lib.Scale
                 if (value >= absZero)
                     celsius = value;
                 else
-                    celsius = 0;
+                    throw new Exception("Temperature less absolute zero.");
             }
         }
 
