@@ -44,7 +44,7 @@
             // tbSet
             // 
             this.tbSet.Location = new System.Drawing.Point(9, 28);
-            this.tbSet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbSet.Margin = new System.Windows.Forms.Padding(2);
             this.tbSet.Name = "tbSet";
             this.tbSet.Size = new System.Drawing.Size(111, 20);
             this.tbSet.TabIndex = 0;
@@ -55,7 +55,7 @@
             // tbGet
             // 
             this.tbGet.Location = new System.Drawing.Point(163, 28);
-            this.tbGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tbGet.Margin = new System.Windows.Forms.Padding(2);
             this.tbGet.Name = "tbGet";
             this.tbGet.ReadOnly = true;
             this.tbGet.Size = new System.Drawing.Size(111, 20);
@@ -67,21 +67,23 @@
             // 
             this.cbSet.FormattingEnabled = true;
             this.cbSet.Location = new System.Drawing.Point(9, 71);
-            this.cbSet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSet.Margin = new System.Windows.Forms.Padding(2);
             this.cbSet.Name = "cbSet";
             this.cbSet.Size = new System.Drawing.Size(111, 21);
             this.cbSet.TabIndex = 2;
             this.ttHelp.SetToolTip(this.cbSet, "Input temperature scale");
+            this.cbSet.SelectedIndexChanged += new System.EventHandler(this.cbSet_SelectedIndexChanged);
             // 
             // cbGet
             // 
             this.cbGet.FormattingEnabled = true;
             this.cbGet.Location = new System.Drawing.Point(163, 71);
-            this.cbGet.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbGet.Margin = new System.Windows.Forms.Padding(2);
             this.cbGet.Name = "cbGet";
             this.cbGet.Size = new System.Drawing.Size(111, 21);
             this.cbGet.TabIndex = 3;
             this.ttHelp.SetToolTip(this.cbGet, "Output temperature scale");
+            this.cbGet.SelectedIndexChanged += new System.EventHandler(this.cbGet_SelectedIndexChanged);
             // 
             // lSet
             // 
@@ -133,7 +135,7 @@
             this.Controls.Add(this.cbSet);
             this.Controls.Add(this.tbGet);
             this.Controls.Add(this.tbSet);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "LesApp2 (Temperature converter)";
             this.statusStrip1.ResumeLayout(false);

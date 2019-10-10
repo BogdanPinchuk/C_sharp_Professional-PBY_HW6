@@ -15,7 +15,8 @@ namespace LesApp2
 {
     public partial class MainForm : Form
     {
-        private delegate double delSGV(double value, Enum degree);
+        private delegate double delSV(double value, Enum degree);
+        private delegate double delGV(Enum degree);
 
         /// <summary>
         /// Шлях до збірки
@@ -44,11 +45,11 @@ namespace LesApp2
         /// <summary>
         /// Введення температури
         /// </summary>
-        private delSGV SetValue;
+        private delSV SetValue;
         /// <summary>
         /// Отримання температури
         /// </summary>
-        private delSGV GetValue;
+        private delGV GetValue;
 
         public MainForm()
         {
@@ -94,7 +95,6 @@ namespace LesApp2
                 return;
 
             // достаємо enum - який відображається як вложений тип
-            //Type @enum = assembly.GetType("Temperature").GetNestedType("TypeScale");
             Type @class = assembly.GetType("LesApp1.Lib.Temperature", false, true);
             temperature = Activator.CreateInstance(@class);
             Type @enum = temperature.GetType().GetNestedType("TypeScale");
@@ -103,11 +103,8 @@ namespace LesApp2
             // отримання методів
             SetValue = (value, degree) => (double)@class.GetMethod("SetValue")
                 .Invoke(temperature, new object[] { value, degree });
-            GetValue = (value, degree) => (double)@class.GetMethod("GetValue")
+            GetValue = (degree) => (double)@class.GetMethod("GetValue")
                 .Invoke(temperature, new object[] { degree });
-
-            // отримання свойства
-            //var temp = @class.GetProperty("Scale").GetValue(temperature)
 
             // заповнення даними comboboxes
             foreach (var i in eTypeScale)
@@ -122,6 +119,25 @@ namespace LesApp2
         }
 
         /// <summary>
+        /// Отримання значення свойств
+        /// </summary>
+        /// <returns></returns>
+        private string GetUnit()
+        {
+            // достаємо enum - який відображається як вложений тип
+            Type @class = assembly.GetType("LesApp1.Lib.Temperature", false, true);
+            // отримання свойства
+            var a0 = @class.GetProperty("Scale").PropertyType;
+            var a1 = a0.GetProperty("Unit");
+            var a2 = a1.GetValue(@class);
+            //todo: налаштувати дані властивостей
+            string unit = (string)(@class.GetProperty("Scale").PropertyType
+                .GetProperty("Unit").GetValue(@class));
+
+            return unit;
+        }
+
+        /// <summary>
         /// При натисканні клавіші Enter
         /// </summary>
         /// <param name="sender"></param>
@@ -129,30 +145,7 @@ namespace LesApp2
         private void tbSet_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
-            {
-                if (double.TryParse(tbSet.Text.Trim().Replace('.', ','), out inputDegree))
-                {
-                    tbSet.ForeColor = Color.FromKnownColor(KnownColor.WindowText);
-                    slInfo.Text = "Help information.";
-
-                    try
-                    {
-                        Converter();
-                    }
-                    catch (Exception ex)
-                    {
-                        // за умови якщо температура менше абсолютного нуля
-                        tbSet.ForeColor = Color.FromKnownColor(KnownColor.Red);
-                        slInfo.Text = ex.Message;
-                    }
-                }
-                else
-                {
-                    // червоний колір вказує на помилку
-                    tbSet.ForeColor = Color.FromKnownColor(KnownColor.Red);
-                    slInfo.Text = "Error input data.";
-                }
-            }
+                Converter();
         }
 
         /// <summary>
@@ -160,7 +153,51 @@ namespace LesApp2
         /// </summary>
         private void Converter()
         {
+            if (double.TryParse(tbSet.Text.Trim().Replace('.', ','), out inputDegree))
+            {
+                tbSet.ForeColor = Color.FromKnownColor(KnownColor.WindowText);
+                slInfo.Text = "Help information.";
 
+                //try
+                //{
+                    // установка значення
+                    SetValue(inputDegree, eTypeScale[cbSet.SelectedIndex]);
+                    // установка розмірності на вхідну величину
+                    lSet.Text = GetUnit();
+                    // отримання розрахованого значення
+                    GetValue(eTypeScale[cbGet.SelectedIndex]);
+                    // установка розмірності на вихідну величину
+                    lGet.Text = GetUnit();
+                //}
+                //catch (Exception ex)
+                //{
+                //    // за умови якщо температура менше абсолютного нуля
+                //    tbSet.ForeColor = Color.FromKnownColor(KnownColor.Red);
+                //    slInfo.Text = ex.Message;
+                //}
+            }
+            else
+            {
+                // червоний колір вказує на помилку
+                tbSet.ForeColor = Color.FromKnownColor(KnownColor.Red);
+                slInfo.Text = "Error input data.";
+            }
         }
+
+        /// <summary>
+        /// Коли змінюється вхідна шкала
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbSet_SelectedIndexChanged(object sender, EventArgs e)
+            => Converter();
+
+        /// <summary>
+        /// Коли змінюється вихідна шкала
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbGet_SelectedIndexChanged(object sender, EventArgs e)
+            => Converter();
     }
 }
