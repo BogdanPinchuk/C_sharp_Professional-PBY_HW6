@@ -147,5 +147,25 @@ namespace LesApp1.Tests
             Assert.AreEqual(degree, actual, delta);
             Debug.WriteLine(converter.Scale.ConvertToString());
         }
+
+        [TestMethod]
+        public void GetProperties_BWC_Celsius()
+        {
+            // arrange
+            converter.SetValue(StubObj.BoilWaterС, Temperature.TypeScale.Celsius);
+
+            // act
+            converter.GetValue(Temperature.TypeScale.Celsius);
+            string actualN = converter.Scale.Name,
+                actualU = converter.Scale.Unit;
+
+            // assert
+            Assert.IsNotNull(actualN);
+            Assert.IsNotNull(actualU);
+
+            // present
+            Debug.WriteLine(actualN);
+            Debug.WriteLine(actualU);
+        }
     }
 }

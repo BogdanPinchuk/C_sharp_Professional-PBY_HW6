@@ -23,9 +23,10 @@ namespace LesApp2
         /// </summary>
         //private readonly string path = @"e:\Documents\Documents\C# .Net Developer\Lessons" +
         //    @"\C# Для профессионалов\Home Work\6\PBY_HW6\LesApp1.Lib\bin\Debug\LesApp1.Lib.dll";
-        private readonly string path = @"e:\Bohdan\Курси C# .Net\C# Для професионалов\Home Work" +
-            @"\6\PBY_HW6\LesApp1.Lib\bin\Debug\LesApp1.Lib.dll";
-        //private readonly string path = @"Resources\LesApp1.Lib.dll";
+        //private readonly string path = @"e:\Bohdan\Курси C# .Net\C# Для професионалов\Home Work" +
+        //    @"\6\PBY_HW6\LesApp1.Lib\bin\Debug\LesApp1.Lib.dll";
+        private readonly string path = @"Resources\LesApp1.Lib.dll";
+        //todo: міняти шлях в залежності від випадку
         /// <summary>
         /// Збірка
         /// </summary>
@@ -124,15 +125,9 @@ namespace LesApp2
         /// <returns></returns>
         private string GetUnit()
         {
-            // достаємо enum - який відображається як вложений тип
-            Type @class = assembly.GetType("LesApp1.Lib.Temperature", false, true);
-            // отримання свойства
-            var a0 = @class.GetProperty("Scale").PropertyType;
-            var a1 = a0.GetProperty("Unit");
-            var a2 = a1.GetValue(@class);
-            //todo: налаштувати дані властивостей
-            string unit = (string)(@class.GetProperty("Scale").PropertyType
-                .GetProperty("Unit").GetValue(@class));
+            // отримання влдастивостей
+            object scale = temperature.GetType().GetProperty("Scale").GetValue(temperature, null);
+            string unit = (string)scale.GetType().GetProperty("Unit").GetValue(scale, null);
 
             return unit;
         }
@@ -153,28 +148,30 @@ namespace LesApp2
         /// </summary>
         private void Converter()
         {
+            tbGet.Text = string.Empty;
+
             if (double.TryParse(tbSet.Text.Trim().Replace('.', ','), out inputDegree))
             {
                 tbSet.ForeColor = Color.FromKnownColor(KnownColor.WindowText);
                 slInfo.Text = "Help information.";
 
-                //try
-                //{
+                try
+                {
                     // установка значення
                     SetValue(inputDegree, eTypeScale[cbSet.SelectedIndex]);
                     // установка розмірності на вхідну величину
                     lSet.Text = GetUnit();
                     // отримання розрахованого значення
-                    GetValue(eTypeScale[cbGet.SelectedIndex]);
+                    tbGet.Text = GetValue(eTypeScale[cbGet.SelectedIndex]).ToString("F3");
                     // установка розмірності на вихідну величину
                     lGet.Text = GetUnit();
-                //}
-                //catch (Exception ex)
-                //{
-                //    // за умови якщо температура менше абсолютного нуля
-                //    tbSet.ForeColor = Color.FromKnownColor(KnownColor.Red);
-                //    slInfo.Text = ex.Message;
-                //}
+                }
+                catch (Exception ex)
+                {
+                    // за умови якщо температура менше абсолютного нуля
+                    tbSet.ForeColor = Color.FromKnownColor(KnownColor.Red);
+                    slInfo.Text = ex.InnerException.Message;
+                }
             }
             else
             {
